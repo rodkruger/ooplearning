@@ -8,7 +8,7 @@ public class Pessoa {
 
     protected Date dataNascimento;  // Visível para esta classe e suas subclasses
 
-    String rg;                      // Visível para as classes do mesmo pacote (exercicio03)
+    int rg;                         // Visível para as classes do mesmo pacote (exercicio03)
 
     private int cpf;                // Visível somente para esta classe
 
