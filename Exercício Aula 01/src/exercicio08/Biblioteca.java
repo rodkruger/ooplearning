@@ -28,7 +28,7 @@ public class Biblioteca {
 
     public static void main(String args[]) {
         Biblioteca b = new Biblioteca(new Acervo[]{
-                new Livro("Charles Duwig", "O poder do hábito"),
+                new Livro("Charles Duhigg", "O poder do hábito"),
                 new CD("Iron Maiden", "Brave New World"),
                 new DVD("George Lucas", "Star Wars - Episode V: The Empire Strikes Back"),
         });
