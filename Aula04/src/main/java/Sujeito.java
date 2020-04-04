@@ -1,14 +1,24 @@
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 import java.io.Serializable;
 
+@Entity
 public class Sujeito implements Serializable {
 
+    @Id
     private long id;
+    
     private boolean isMasculino;
     private int idade;
     private String grupoSanguineo;
     private String sintomas;
     private boolean intervencao;
     private boolean obito;
+
+    public Sujeito() {
+
+    }
 
     public Sujeito(long id, boolean isMasculino, int idade, String grupoSanguineo, String sintomas, boolean intervencao, boolean obito) {
         this.id = id;

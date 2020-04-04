@@ -1,3 +1,7 @@
+import com.mongodb.MongoClient;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+
 import java.io.*;
 import java.util.*;
 
@@ -6,12 +10,34 @@ public class Leitor {
     static Map<Long, Sujeito> sujeitos = new HashMap<>();
     static Map<String, List<Sujeito>> sujeitosPorGrupoSanguineo = new HashMap<>();
 
+    static Morphia morphia;
+    static MongoClient mongoClient;
+    static Datastore datastore;
+
     public static void main(String[] args) {
 
         carregaSujeitos();
         escreveResultado();
         escreveBinario();
+        initMongoDb();
+        escreveNoMongo();
 
+        List<Sujeito> lista = datastore.createQuery(Sujeito.class).field("intervencao").equal(true).asList();
+
+        System.out.print(lista);
+    }
+
+    private static void initMongoDb() {
+        morphia = new Morphia();
+        mongoClient = new MongoClient("localhost", 27037);
+        datastore = morphia.createDatastore(mongoClient, "poo");
+        datastore.ensureIndexes();
+    }
+
+    private static void escreveNoMongo() {
+        for (Sujeito s : sujeitos.values()) {
+            datastore.save(s);
+        }
     }
 
     private static void escreveBinario() {
