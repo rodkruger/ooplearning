@@ -1,5 +1,7 @@
 public class Game {
 
+    public static final int TOTAL_ITEMS = 10;
+
     private int pins[] = new int[21];
 
     private int currentRoll = 0;
@@ -13,7 +15,7 @@ public class Game {
         int score = 0;
         int firstInFrame = 0;
 
-        for (int frame = 0; frame < 10; frame++) {
+        for (int frame = 0; frame < TOTAL_ITEMS; frame++) {
             if (isStrike(pins[firstInFrame])) {
                 score += nextTwoBallForStrike(firstInFrame);
                 firstInFrame++;
